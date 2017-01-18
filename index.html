@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>SaveApp</title>
+</head>
+<body>
+<div>
+  <h1>SavingApp</h1>
+  Your savings balance: <input type="text" id="balance" placeholder="balance"/>
+  <input type="button" value="Done" onClick="printBalance()"/>
+<h3 id="printedbalance"></h3>
+</div>
+<div id=addDiv style="display: none;">
+<h2>Add something to save for:</h2>
+  <input type="text" id="name" placeholder="Save item"/>
+  <input type="text" id="percent" placeholder="Per cent"/>
+  <input type="text" id="cost" placeholder="Total cost"/>
+  <input type="button" value="Add" onClick="addSavingElements()"/>
+
+  <h3 id = "savingelement"></h3>
+</div>
+</body>
+
+<script language="javascript" type="text/javascript">
+  var savingsElements = new Array();
+
+  function printBalance(){
+    document.getElementById('printedbalance').innerHTML = "Your savings balance is: " +document.getElementById('balance').value;
+    document.getElementById('addDiv').style.display= 'inline' ;
+  }
+
+  function addSavingElements(){
+    var saving = {name:document.getElementById('name').value, percent:document.getElementById('percent').value, cost:document.getElementById('cost').value};
+    savingsElements.push(saving);
+    var temp = "";
+    for (var i = 0; i < savingsElements.length; i++) {
+       temp += "\r\n"+savingsElements[i].name + " " + savingsElements[i].percent+"%" + " " + "with total cost: " + savingsElements[i].cost + "kr";
+    }
+    document.getElementById('savingelement').innerHTML= temp;
+
+  }
+</script>
+</html>
